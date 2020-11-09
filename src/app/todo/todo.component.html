@@ -15,7 +15,24 @@
             </button>
             <p [ngClass]="{ strikethrough: todo.completed }">{{ todo.task }}</p>
           </div>
-          <button (click)="removeTask(i)">X</button>
+          <div class="end-section">
+            <button *ngIf="!todo.edit" (click)="editButton(i)">Edit</button>
+            <form
+              *ngIf="todo.edit"
+              #editForm="ngForm"
+              (submit)="editTask(editForm, i)"
+            >
+              <label for="edit">Edit Task</label>
+              <input
+                type="text"
+                name="edit"
+                id="edit"
+                [(ngModel)]="todo.task"
+              />
+              <button>Confirm Edit</button>
+            </form>
+            <button (click)="removeTask(i)">X</button>
+          </div>
         </div>
       </li>
     </ol>

@@ -12,14 +12,17 @@ export class TodoComponent implements OnInit {
     {
       task: 'eat dinner',
       completed: false,
+      edit: false,
     },
     {
       task: 'paint',
       completed: false,
+      edit: false,
     },
     {
       task: 'wake up',
       completed: true,
+      edit: false,
     },
   ];
 
@@ -32,6 +35,7 @@ export class TodoComponent implements OnInit {
     let newTask: Todo = {
       task: form.value.id,
       completed: false,
+      edit: false,
     };
     this.todos.push(newTask);
     form.reset();
@@ -58,5 +62,15 @@ export class TodoComponent implements OnInit {
 
   completeTask = (index: number): void => {
     this.todos[index].completed = true;
+  };
+
+  editButton = (index) => {
+    this.todos[index].edit = true;
+  };
+
+  editTask = (form: NgForm, index: number): void => {
+    // this.todos[index].task = form.value.edit;
+    this.todos[index].completed = false;
+    this.todos[index].edit = false;
   };
 }

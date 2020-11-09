@@ -18,6 +18,10 @@
   display: flex;
 }
 
+.end-section {
+  display: flex;
+}
+
 .strikethrough {
   text-decoration: line-through;
 }
